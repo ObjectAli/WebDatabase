@@ -1,16 +1,19 @@
-package entity;
+package com.moodle.sevsu.webdb.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "test", schema = "test", catalog = "")
 public class Direction {
 
     @Id
     @GeneratedValue
     private int id;
+
+    @Column(name = "cipher")
     private String cipher;
+
+    @Column(name = "title")
     private String title;
 
     public int getId() {
