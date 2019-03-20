@@ -9,13 +9,15 @@
 </head>
 
 <body>
-<div class="container">
-    <div th:replace="fragments/header :: header"></div>
-    <div th:if="${not #lists.isEmpty(directions)}">
-        <div th:replace="operations/list :: direction"></div>
+    <div class="container">
+        <div class="main-wrap">
+            <div class="header" th:replace="fragments/header :: header"></div>
+            <div class="wrapper" th:if="${not #lists.isEmpty(directions)}">
+                <div th:replace="operations/list :: direction"></div>
+            </div>
+            </div>
+        <div class="footer" th:replace="fragments/footer :: footer"></div>
     </div>
-    <div th:replace="fragments/footer :: footer"></div>
-</div>
 </body>
 
 </html>
