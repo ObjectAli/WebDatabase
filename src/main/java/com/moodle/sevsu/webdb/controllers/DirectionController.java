@@ -14,7 +14,7 @@ public class DirectionController {
     private DirectionService directionService;
 
     @Autowired
-    public void setNoteService(DirectionService service) {
+    public void setDirectionService(DirectionService service) {
         this.directionService = service;
     }
 

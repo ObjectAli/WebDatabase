@@ -6,14 +6,25 @@
     <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" media="screen" />
 </head>
 <div class="wrapper" th:fragment="direction">
+    <form class="form-horizontal" th:action="@{/save}" name="input_form" id="input_form"
+          method="post" role="form">
+        <a class="add">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+        </a>
+        <div class="form-group">
+            <input type="text" class="form-control form-control_cipher" id="" th:name="cipher" placeholder="Enter your cipher." maxlength="100"/>
+            <input type="text" class="form-control form-control_title" id="" th:name="title" placeholder="Enter your title." maxlength="100"/>
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
     <table class="table table-bordered table-hover horizontal-align">
         <thead>
         <tr>
-            <th style="width: 5%">#</th>
-            <th style="width: 20%">Cipher</th>
-            <th style="width: 60%">Title</th>
-            <th style="width: 5%">Edit</th>
-            <th style="width: 5%">Delete</th>
+            <th style="width: 50px">Id</th>
+            <th style="width: 200px">Cipher</th>
+            <th style="width: 300px">Title</th>
+            <th style="width: 70px">Edit</th>
+            <th style="width: 70px">Delete</th>
         </tr>
         </thead>
         <tbody>
