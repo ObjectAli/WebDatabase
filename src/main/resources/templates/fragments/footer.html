@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" media="screen"/>
+</head>
+<div class="footer" th:fragment="footer">
+    <nav class="navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <div class="navbar-footer">
+                <a class="navbar-brand">logo</a>
+                <a class="navbar-brand" th:href="@{/directions}">Directions</a>
+            </div>
+        </div>
+    </nav>
+    <!--<script src="../static/js/jquery-2.1.4_min.js" th:src="@{/js/jquery-2.1.4_min.js}"></script>-->
+    <!--<script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>-->
+</div>
+</html>

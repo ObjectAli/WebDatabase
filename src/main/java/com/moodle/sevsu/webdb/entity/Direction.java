@@ -1,13 +1,17 @@
 package com.moodle.sevsu.webdb.entity;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name = "test", schema = "test", catalog = "")
+@Table(name = "direction")
 public class Direction {
 
     @Id
     @GeneratedValue
+    @Autowired
     private int id;
 
     @Column(name = "cipher")
@@ -40,8 +44,14 @@ public class Direction {
         this.title = title;
     }
 
+    public Direction(){}
+
     public Direction(String cipher, String title) {
         this.cipher = cipher;
         this.title = title;
+    }
+
+    public Direction(String cipher) {
+        this.cipher = cipher;
     }
 }
