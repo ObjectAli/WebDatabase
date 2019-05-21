@@ -6,7 +6,7 @@
     <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" media="screen" />
 </head>
 <div class="wrapper" th:fragment="direction">
-    <form class="form-horizontal" th:action="@{/save}" name="input_form" id="input_form"
+    <form class="form-horizontal" th:action="@{/new}" name="input_form" id="input_form"
           method="post" role="form">
         <a class="add">
             <i class="fa fa-plus" aria-hidden="true"></i>
@@ -37,5 +37,8 @@
         </tr>
         </tbody>
     </table>
+    <!--<div class="window">-->
+        <!--&lt;!&ndash;<div th:replace="directionsFunc/edit :: window"></div>&ndash;&gt;-->
+    <!--</div>-->
 </div>
 </html>

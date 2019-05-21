@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @RequestMapping("/")
@@ -25,34 +27,28 @@ public class DirectionController {
         return "directions";
     }
 
-    @GetMapping("/new")
-    public String newDirection() {
-        return "operations/new";
-    }
-
-    @PostMapping("/save")
-    public String updateDirection(@RequestParam String cipher, String title) {
+    @PostMapping("/new")
+    public ModelAndView updateDirection(@RequestParam String cipher, String title) {
         directionService.saveDirection(new Direction(cipher,title));
-        return "/directions";
+        return new ModelAndView(new RedirectView("/directions"));
     }
 
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable Integer id, Model model) {
         Direction direction = directionService.getDirectionById(id);
         model.addAttribute("direction", direction);
-        return "operations/edit";
+        return "directionsFunc/edit";
     }
 
     @PostMapping("/update")
-    public String saveDirection(@RequestParam Integer id, @RequestParam String cipher, @RequestParam String title) {
+    public ModelAndView saveDirection(@RequestParam Integer id, @RequestParam String cipher, @RequestParam String title) {
         directionService.updateDirection(id, cipher, title);
-        return "/directions";
+        return new ModelAndView(new RedirectView("/directions"));
     }
 
     @GetMapping("/delete/{id}")
-    public String delete(@PathVariable Integer id) {
+    public ModelAndView delete(@PathVariable Integer id) {
         directionService.deleteDirection(id);
-        return "/directions";
+        return new ModelAndView(new RedirectView("/directions"));
     }
-
 }

@@ -4,20 +4,21 @@
       xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head">
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" media="screen"/>
     <title>Title</title>
 </head>
 
 <body>
-    <div class="container">
-        <div class="main-wrap">
-            <div class="header" th:replace="fragments/header :: header"></div>
-            <div class="wrapper" th:if="${not #lists.isEmpty(directions)}">
-                <div th:replace="operations/list :: direction"></div>
-            </div>
-            </div>
-        <div class="footer" th:replace="fragments/footer :: footer"></div>
+<div class="container">
+    <div class="main-wrap">
+        <div class="header" th:replace="fragments/header :: header"></div>
+        <div class="wrapper" th:if="${not #lists.isEmpty(directions)}">
+            <div th:replace="directionsFunc/list :: direction"></div>
+        </div>
     </div>
+    <div class="footer" th:replace="fragments/footer :: footer"></div>
+</div>
 </body>
 
 </html>
