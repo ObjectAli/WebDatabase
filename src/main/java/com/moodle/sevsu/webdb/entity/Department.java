@@ -5,16 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "direction")
-public class Direction {
+@Table(name = "department")
+public class Department {
 
     @Id
     @GeneratedValue
     @Autowired
     private int id;
-
-    @Column(name = "cipher")
-    private String cipher;
 
     @Column(name = "title")
     private String title;
@@ -27,14 +24,6 @@ public class Direction {
         this.id = id;
     }
 
-    public String getCipher() {
-        return cipher;
-    }
-
-    public void setCipher(String cipher) {
-        this.cipher = cipher;
-    }
-
     public String getTitle() {
         return title;
     }
@@ -43,14 +32,9 @@ public class Direction {
         this.title = title;
     }
 
-    public Direction(){}
+    public Department(){}
 
-    public Direction(String cipher, String title) {
-        this.cipher = cipher;
+    public Department(String title) {
         this.title = title;
-    }
-
-    public Direction(String cipher) {
-        this.cipher = cipher;
     }
 }

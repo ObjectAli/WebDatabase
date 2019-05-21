@@ -27,26 +27,26 @@ public class DirectionController {
         return "directions";
     }
 
-    @PostMapping("/new")
+    @PostMapping("/directions/new")
     public ModelAndView updateDirection(@RequestParam String cipher, String title) {
         directionService.saveDirection(new Direction(cipher,title));
         return new ModelAndView(new RedirectView("/directions"));
     }
 
-    @GetMapping("/edit/{id}")
+    @GetMapping("/directions/edit/{id}")
     public String edit(@PathVariable Integer id, Model model) {
         Direction direction = directionService.getDirectionById(id);
         model.addAttribute("direction", direction);
         return "directionsFunc/edit";
     }
 
-    @PostMapping("/update")
+    @PostMapping("/directions/update")
     public ModelAndView saveDirection(@RequestParam Integer id, @RequestParam String cipher, @RequestParam String title) {
         directionService.updateDirection(id, cipher, title);
         return new ModelAndView(new RedirectView("/directions"));
     }
 
-    @GetMapping("/delete/{id}")
+    @GetMapping("/directions/delete/{id}")
     public ModelAndView delete(@PathVariable Integer id) {
         directionService.deleteDirection(id);
         return new ModelAndView(new RedirectView("/directions"));
