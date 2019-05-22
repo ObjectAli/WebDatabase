@@ -2,18 +2,19 @@
 <!--suppress ALL -->
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head>
-    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" media="screen" />
+<head th:replace="fragments/head :: head">
 </head>
 <div class="wrapper" th:fragment="direction">
-    <form class="form-horizontal" th:action="@{/directions/new}" name="input_form" id="input_form"
+    <form class="form-horizontal form-add-directions" th:action="@{/directions/new}" name="input_form" id="input_form"
           method="post" role="form">
         <a class="add">
             <i class="fa fa-plus" aria-hidden="true"></i>
         </a>
         <div class="form-group">
-            <input type="text" class="form-control form-control_cipher" id="" th:name="cipher" placeholder="Enter your cipher." maxlength="100"/>
-            <input type="text" class="form-control form-control_title" id="" th:name="title" placeholder="Enter your title." maxlength="100"/>
+            <input type="text" class="form-control form-control_cipher" id="" th:name="cipher"
+                   placeholder="Enter your cipher." maxlength="100"/>
+            <input type="text" class="form-control form-control_title" id="" th:name="title"
+                   placeholder="Enter your title." maxlength="100"/>
         </div>
         <button type="submit" class="btn btn-primary">Add</button>
     </form>
@@ -30,10 +31,13 @@
         <tbody>
         <tr th:each="direction : ${directions}">
             <td class="table-column" th:text="${direction.id}"></td>
-            <td class="table-column" th:text="${direction.cipher}"> </td>
+            <td class="table-column" th:text="${direction.cipher}"></td>
             <td class="table-column" th:text="${direction.title}"></td>
-            <td class="table-column"><a th:href="@{'/directions/edit/{id}'(id=${direction.id})}"><i class="fa fa-edit" style="font-size:20px"></i></a></td>
-            <td class="table-column"><a th:href="@{'/directions/delete/{id}'(id=${direction.id})}"><i class="fa fa-trash" style="font-size:20px"></i></a></td>
+            <td class="table-column"><a th:href="@{'/directions/edit/{id}'(id=${direction.id})}"><i class="fa fa-edit"
+                                                                                                    style="font-size:20px"></i></a>
+            </td>
+            <td class="table-column"><a th:href="@{'/directions/delete/{id}'(id=${direction.id})}"><i
+                    class="fa fa-trash" style="font-size:20px"></i></a></td>
         </tr>
         </tbody>
     </table>

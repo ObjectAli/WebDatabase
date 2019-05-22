@@ -2,17 +2,17 @@
 <!--suppress ALL -->
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head>
-    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" media="screen" />
+<head th:replace="fragments/head :: head">
 </head>
 <div class="wrapper" th:fragment="department">
-    <form class="form-horizontal" th:action="@{/departments/new}" name="input_form" id="input_form"
+    <form class="form-horizontal form-add-departments" th:action="@{/departments/new}" name="input_form" id="input_form"
           method="post" role="form">
         <a class="add">
             <i class="fa fa-plus" aria-hidden="true"></i>
         </a>
         <div class="form-group">
-            <input type="text" class="form-control form-control_title" id="" th:name="title" placeholder="Enter your title." maxlength="100"/>
+            <input type="text" class="form-control form-control_title" id="" th:name="title"
+                   placeholder="Enter your title." maxlength="100"/>
         </div>
         <button type="submit" class="btn btn-primary">Add</button>
     </form>
@@ -29,8 +29,11 @@
         <tr th:each="department : ${departments}">
             <td class="table-column" th:text="${department.id}"></td>
             <td class="table-column" th:text="${department.title}"></td>
-            <td class="table-column"><a th:href="@{'/departments/edit/{id}'(id=${department.id})}"><i class="fa fa-edit" style="font-size:20px"></i></a></td>
-            <td class="table-column"><a th:href="@{'/departments/delete/{id}'(id=${department.id})}"><i class="fa fa-trash" style="font-size:20px"></i></a></td>
+            <td class="table-column"><a th:href="@{'/departments/edit/{id}'(id=${department.id})}"><i class="fa fa-edit"
+                                                                                                      style="font-size:20px"></i></a>
+            </td>
+            <td class="table-column"><a th:href="@{'/departments/delete/{id}'(id=${department.id})}"><i
+                    class="fa fa-trash" style="font-size:20px"></i></a></td>
         </tr>
         </tbody>
     </table>

@@ -3,7 +3,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head">
-    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" media="screen"/>
 </head>
 <body>
 <div class="container">
@@ -20,7 +19,8 @@
                 </tr>
                 </thead>
             </table>
-            <form class="form-horizontal" th:object="${direction}" th:action="@{/directions/update}" name="edit_form"
+            <form class="form-horizontal form-add-directions" th:object="${direction}" th:action="@{/directions/update}"
+                  name="edit_form"
                   id="edit_form"
                   method="post" role="form">
                 <div class="form-group">
