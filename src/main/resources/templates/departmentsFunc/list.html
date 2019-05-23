@@ -19,7 +19,7 @@
     <table class="table table-bordered table-hover horizontal-align">
         <thead>
         <tr>
-            <th style="width: 50px">Id</th>
+            <th style="width: 50px">№</th>
             <th style="width: 300px">Title</th>
             <th style="width: 70px">Edit</th>
             <th style="width: 70px">Delete</th>
@@ -27,7 +27,7 @@
         </thead>
         <tbody>
         <tr th:each="department : ${departments}">
-            <td class="table-column" th:text="${department.id}"></td>
+            <td class="table-column" th:text="${departmentStat.count}"></td>
             <td class="table-column" th:text="${department.title}"></td>
             <td class="table-column"><a th:href="@{'/departments/edit/{id}'(id=${department.id})}"><i class="fa fa-edit"
                                                                                                       style="font-size:20px"></i></a>

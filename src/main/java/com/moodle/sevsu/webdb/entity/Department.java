@@ -16,6 +16,10 @@ public class Department {
     @Column(name = "title")
     private String title;
 
+    @ManyToOne
+    @JoinColumn
+    private Institute institute;
+
     public int getId() {
         return id;
     }

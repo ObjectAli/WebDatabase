@@ -11,13 +11,18 @@ public class Direction {
     @Id
     @GeneratedValue
     @Autowired
+    @Column(name = "id", unique =  true, updatable = false)
     private int id;
 
-    @Column(name = "cipher")
+    @Column(name = "cipher", unique = true)
     private String cipher;
 
     @Column(name = "title")
     private String title;
+
+    @ManyToOne
+    @JoinColumn
+    private Institute institute;
 
     public int getId() {
         return id;

@@ -21,7 +21,7 @@
     <table class="table table-bordered table-hover horizontal-align">
         <thead>
         <tr>
-            <th style="width: 50px">Id</th>
+            <th style="width: 50px">№</th>
             <th style="width: 200px">Cipher</th>
             <th style="width: 300px">Title</th>
             <th style="width: 70px">Edit</th>
@@ -30,7 +30,7 @@
         </thead>
         <tbody>
         <tr th:each="direction : ${directions}">
-            <td class="table-column" th:text="${direction.id}"></td>
+            <td class="table-column" th:text="${directionStat.count}"></td>
             <td class="table-column" th:text="${direction.cipher}"></td>
             <td class="table-column" th:text="${direction.title}"></td>
             <td class="table-column"><a th:href="@{'/directions/edit/{id}'(id=${direction.id})}"><i class="fa fa-edit"
