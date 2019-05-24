@@ -48,6 +48,14 @@ public class Direction {
         this.title = title;
     }
 
+    public Institute getInstitute() {
+        return institute;
+    }
+
+    public void setInstitute(Institute institute) {
+        this.institute = institute;
+    }
+
     public Direction(){}
 
     public Direction(String cipher, String title) {
@@ -55,7 +63,9 @@ public class Direction {
         this.title = title;
     }
 
-    public Direction(String cipher) {
+    public Direction(String cipher, String title, Institute institute) {
         this.cipher = cipher;
+        this.title = title;
+        this.institute = institute;
     }
 }

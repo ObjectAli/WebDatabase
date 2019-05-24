@@ -24,6 +24,7 @@ public class DirectionController {
     @GetMapping("/directions")
     public String list(Model model) {
         model.addAttribute("directions", directionService.findAll());
+        model.addAttribute("institutes", directionService.findAllInstitute());
         return "directions";
     }
 

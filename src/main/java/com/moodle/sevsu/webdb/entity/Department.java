@@ -11,6 +11,7 @@ public class Department {
     @Id
     @GeneratedValue
     @Autowired
+    @Column(name = "id", unique =  true, updatable = false)
     private int id;
 
     @Column(name = "title")
@@ -36,9 +37,19 @@ public class Department {
         this.title = title;
     }
 
-    public Department(){}
+    public Institute getInstitute() {
+        return institute;
+    }
 
-    public Department(String title) {
+    public void setInstitute(Institute institute) {
+        this.institute = institute;
+    }
+
+    public Department() {
+    }
+
+    public Department(String title, Institute institute) {
         this.title = title;
+        this.institute = institute;
     }
 }

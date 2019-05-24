@@ -14,6 +14,7 @@
                 <tr>
                     <th style="width: 50px">Id</th>
                     <th style="width: 300px">Title</th>
+                    <th style="width: 300px">Institute</th>
                     <th style="width: 140px">Button</th>
                 </tr>
                 </thead>
@@ -23,9 +24,15 @@
                   id="edit_form"
                   method="post" role="form">
                 <div class="form-group">
-                    <input class="form-control form-control_id" type="text" id="id" th:value="*{id}" th:name="id"/>
+                    <input disabled class="form-control form-control_id" type="text" id="id" th:value="*{id}" th:name="id"/>
                     <input class="form-control form-control_title" type="text" id="title" th:value="*{title}"
                            th:name="title"/>
+                    <select required th:name="institute" id="select" class="form-control form-control_title select">
+                        <option th:each="institute : ${institutes}"
+                                th:value="${institute.id}"
+                                th:text="${institute.title}">
+                        </option>
+                    </select>
                 </div>
                 <button onclick="dir" type="submit" class="btn btn-primary">Submit</button>
             </form>

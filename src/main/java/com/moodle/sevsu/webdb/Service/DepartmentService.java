@@ -1,6 +1,7 @@
 package com.moodle.sevsu.webdb.Service;
 
 import com.moodle.sevsu.webdb.entity.Department;
+import com.moodle.sevsu.webdb.entity.Institute;
 
 import java.util.List;
 
@@ -15,4 +16,6 @@ public interface DepartmentService {
     void deleteDepartment(Integer id);
 
     List<Department> findAll();
+
+    List<Institute> findAllInstitute();
 }
