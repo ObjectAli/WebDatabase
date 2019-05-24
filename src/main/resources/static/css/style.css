@@ -163,7 +163,7 @@ tbody tr:nth-child(2n) {
     height: 32px;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     position: relative;
     margin: 20px auto 20px;
     flex-wrap: nowrap;
@@ -181,6 +181,10 @@ tbody tr:nth-child(2n) {
     width: 510px;
 }
 
+.form-add-users{
+    width: auto;
+}
+
 .add {
     display: flex;
     height: 100%;
@@ -191,22 +195,35 @@ tbody tr:nth-child(2n) {
     align-items: center;
 }
 .form-control {
+    width: 100px;
     height: 100%;
     border-radius: 5px;
     border: none;
     color:gray;
 }
 
-.form-control_id {
+.form-control_50px{
     width: 50px;
 }
 
-.form-control_cipher {
-    width: 198px;
+.form-control_100px{
+    width: 100px;
 }
 
-.form-control_title {
-    width: 298px;
+.form-control_145px{
+    width: 145px;
+}
+
+.form-control_129px{
+    width: 129px;
+}
+
+.form-control_200px{
+    width: 200px;
+}
+
+.form-control_300px{
+    width: 300px;
 }
 
 .btn-primary {

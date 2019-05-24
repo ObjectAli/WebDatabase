@@ -39,12 +39,13 @@ public class DepartmentController {
     public String edit(@PathVariable Integer id, Model model) {
         Department department = departmentService.getDepartmentById(id);
         model.addAttribute("department", department);
+        model.addAttribute("institutes", departmentService.findAllInstitute());
         return "departmentsFunc/edit";
     }
 
     @PostMapping("/departments/update")
-    public ModelAndView saveDepartment(@RequestParam Integer id, @RequestParam String title) {
-        departmentService.updateDepartment(id, title);
+    public ModelAndView saveDepartment(@RequestParam Integer id, @RequestParam String title, @RequestParam Institute institute) {
+        departmentService.updateDepartment(id, title, institute);
         return new ModelAndView(new RedirectView("/departments"));
     }
 

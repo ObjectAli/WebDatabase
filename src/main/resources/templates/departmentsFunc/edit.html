@@ -24,10 +24,11 @@
                   id="edit_form"
                   method="post" role="form">
                 <div class="form-group">
-                    <input disabled class="form-control form-control_id" type="text" id="id" th:value="*{id}" th:name="id"/>
-                    <input class="form-control form-control_title" type="text" id="title" th:value="*{title}"
+                    <input class="form-control form-control_50px" type="text" id="id" th:value="*{id}"
+                           th:name="id"/>
+                    <input class="form-control form-control_300px" type="text" id="title" th:value="*{title}"
                            th:name="title"/>
-                    <select required th:name="institute" id="select" class="form-control form-control_title select">
+                    <select required th:name="institute" id="select" class="form-control form-control_300px">
                         <option th:each="institute : ${institutes}"
                                 th:value="${institute.id}"
                                 th:text="${institute.title}">
