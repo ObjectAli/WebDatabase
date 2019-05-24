@@ -38,6 +38,7 @@ public class DirectionController {
     public String edit(@PathVariable Integer id, Model model) {
         Direction direction = directionService.getDirectionById(id);
         model.addAttribute("direction", direction);
+        model.addAttribute("institutes", directionService.findAllInstitute());
         return "directionsFunc/edit";
     }
 

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+</head>
+<div class="wrapper" th:fragment="user">
+    <form  class="form-horizontal form-add-users" th:action="@{/users/new}" name="input_form" id="input_form"
+           method="post" role="form">
+        <a class="add">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+        </a>
+        <div class="form-group">
+            <input class="form-control form-control_145px" type="text" id="name" th:value="*{name}"
+                   th:name="name" placeholder="Enter name."/>
+            <input class="form-control form-control_145px" type="text" id="name" th:value="*{surname}"
+                   th:name="surname" placeholder="Enter surname."/>
+            <input class="form-control form-control_145px" type="text" id="name" th:value="*{secondname}"
+                   th:name="secondname" placeholder="Enter second name."/>
+            <select required th:name="position" id="select" class="form-control form-control_145px">
+                <optgroup label="Студенты">
+                    <option>Бакалавр</option>
+                    <option>Специалист</option>
+                    <option>Магистр</option>
+                    <option>Аспирант</option>
+                </optgroup>
+                <optgroup label="Преподаватели">
+                    <option>Преподаватель</option>
+                    <option>Ст. преподаватель</option>
+                    <option>Доцент</option>
+                    <option>Профессор</option>
+                </optgroup>
+            </select>
+            <select required th:name="department" id="select" class="form-control form-control_145px " placeholder="Enter your title.">
+                <option th:each="department : ${departments}"
+                        th:value="${department.id}"
+                        th:text="${department.title}">
+                </option>
+            </select>
+            <input class="form-control form-control_145px" type="text" id="name" th:value="*{phone}"
+                   th:name="phone" placeholder="Enter phone."/>
+            <input class="form-control form-control_200px" type="text" id="name" th:value="*{email}"
+                   th:name="email" placeholder="Enter email."/>
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+    <table class="table table-bordered table-hover horizontal-align">
+        <thead>
+        <tr>
+            <th style="width: 50px">№</th>
+            <th style="width: 150px">Name</th>
+            <th style="width: 150px">Surname</th>
+            <th style="width: 150px">Second Name</th>
+            <th style="width: 150px">Position</th>
+            <th style="width: 150px">Department</th>
+            <th style="width: 150px">Phone</th>
+            <th style="width: 200px">Email</th>
+            <th style="width: 70px">Edit</th>
+            <th style="width: 70px">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td class="table-column" th:text="${userStat.count}"></td>
+            <td class="table-column" th:text="${user.name}"></td>
+            <td class="table-column" th:text="${user.surname}"></td>
+            <td class="table-column" th:text="${user.secondname}"></td>
+            <td class="table-column" th:text="${user.position}"></td>
+            <td class="table-column" th:text="${user.department.title}"></td>
+            <td class="table-column" th:text="${user.phone}"></td>
+            <td class="table-column" th:text="${user.email}"></td>
+            <td class="table-column"><a th:href="@{'/users/edit/{id}'(id=${user.id})}"><i class="fa fa-edit"
+                                                                                                      style="font-size:20px"></i></a>
+            </td>
+            <td class="table-column"><a th:href="@{'/users/delete/{id}'(id=${user.id})}"><i
+                    class="fa fa-trash" style="font-size:20px"></i></a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</html>

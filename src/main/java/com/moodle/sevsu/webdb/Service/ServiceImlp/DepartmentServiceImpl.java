@@ -30,9 +30,10 @@ public class DepartmentServiceImpl implements DepartmentService {
     public void saveDepartment(Department department){repository.save(department);}
 
     @Override
-    public void updateDepartment(Integer id, String title){
+    public void updateDepartment(Integer id, String title, Institute institute){
         Department updated = repository.getOne(id);
         updated.setTitle(title);
+        updated.setInstitute(institute);
         repository.save(updated);
     }
 

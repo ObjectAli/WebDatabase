@@ -11,7 +11,7 @@ public interface DepartmentService {
 
     void saveDepartment(Department department);
 
-    void updateDepartment(Integer id, String title);
+    void updateDepartment(Integer id, String title, Institute institute);
 
     void deleteDepartment(Integer id);
 
