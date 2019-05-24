@@ -13,28 +13,19 @@
                 <thead>
                 <tr>
                     <th style="width: 50px">Id</th>
-                    <th style="width: 200px">Cipher</th>
                     <th style="width: 300px">Title</th>
                     <th style="width: 140px">Button</th>
                 </tr>
                 </thead>
             </table>
-            <form class="form-horizontal form-add-directions" th:object="${direction}" th:action="@{/directions/update}"
-                  name="edit_form"
+            <form class="form-horizontal form-add-institutes" th:object="${institute}"
+                  th:action="@{/institutes/update}" name="edit_form"
                   id="edit_form"
                   method="post" role="form">
                 <div class="form-group">
                     <input disabled class="form-control form-control_id" type="text" id="id" th:value="*{id}" th:name="id"/>
-                    <input class="form-control form-control_cipher" type="text" id="cipher" th:value="*{cipher}"
-                           th:name="cipher"/>
                     <input class="form-control form-control_title" type="text" id="title" th:value="*{title}"
                            th:name="title"/>
-                    <select required th:name="institute" id="select" class="form-control form-control_title select">
-                        <option th:each="institute : ${institutes}"
-                                th:value="${institute.id}"
-                                th:text="${institute.title}">
-                        </option>
-                    </select>
                 </div>
                 <button onclick="dir" type="submit" class="btn btn-primary">Submit</button>
             </form>

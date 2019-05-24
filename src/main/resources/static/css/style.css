@@ -170,11 +170,15 @@ tbody tr:nth-child(2n) {
 }
 
 .form-add-directions{
-    width: 710px;
+    width: 1010px;
 }
 
 .form-add-departments{
-    width: 505px;
+    width: 810px;
+}
+
+.form-add-institutes{
+    width: 510px;
 }
 
 .add {
@@ -186,26 +190,23 @@ tbody tr:nth-child(2n) {
     justify-content: center;
     align-items: center;
 }
-
-.form-control_id {
+.form-control {
     height: 100%;
-    width: 50px;
     border-radius: 5px;
     border: none;
+    color:gray;
+}
+
+.form-control_id {
+    width: 50px;
 }
 
 .form-control_cipher {
-    height: 100%;
     width: 198px;
-    border-radius: 5px;
-    border: none;
 }
 
 .form-control_title {
-    height: 100%;
     width: 298px;
-    border-radius: 5px;
-    border: none;
 }
 
 .btn-primary {
