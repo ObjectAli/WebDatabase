@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+</head>
+<div class="container">
+    <div class="main-wrap">
+        <div class="header" th:replace="fragments/header :: header"></div>
+        <div class="wrapper frame" th:fragment="developer">
+            <table class="table table-bordered table-hover horizontal-align">
+                <thead>
+                <tr>
+                    <th style="width: 50px">№</th>
+                    <th style="width: 150px">Name</th>
+                    <th style="width: 150px">Surname</th>
+                    <th style="width: 150px">Second Name</th>
+                    <th style="width: 150px">Position</th>
+                    <th style="width: 150px">Department</th>
+                    <th style="width: 150px">Phone</th>
+                    <th style="width: 200px">Email</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="developer : ${developers}">
+                    <td class="table-column" th:text="${developerStat.count}"></td>
+                    <td class="table-column" th:text="${developer.user.name}"></td>
+                    <td class="table-column" th:text="${developer.user.surname}"></td>
+                    <td class="table-column" th:text="${developer.user.secondname}"></td>
+                    <td class="table-column" th:text="${developer.user.position}"></td>
+                    <td class="table-column" th:text="${developer.user.department.title}"></td>
+                    <td class="table-column" th:text="${developer.user.phone}"></td>
+                    <td class="table-column" th:text="${developer.user.email}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="footer" th:replace="fragments/footer :: footer"></div>
+</div>
+</html>

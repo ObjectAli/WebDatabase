@@ -58,11 +58,6 @@ public class Direction {
 
     public Direction(){}
 
-    public Direction(String cipher, String title) {
-        this.cipher = cipher;
-        this.title = title;
-    }
-
     public Direction(String cipher, String title, Institute institute) {
         this.cipher = cipher;
         this.title = title;

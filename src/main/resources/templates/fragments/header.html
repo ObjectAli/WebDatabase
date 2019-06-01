@@ -7,16 +7,23 @@
 </head>
 <div class="header" th:fragment="header">
     <div class="container">
-        <div class="navbar-header">
-            <a class="logo">
-                <img src="../../img/logo.png" alt="SevMoodle"/>
-            </a>
-            <h1 class="logo-title">SevMoodle</h1>
-            <a class="menu-item" th:href="@{/directions}">Directions</a>
-            <a class="menu-item" th:href="@{/departments}">Departments</a>
-            <a class="menu-item" th:href="@{/institutes}">Institutes</a>
-            <a class="menu-item" th:href="@{/users}">Users</a>
-            <a class="menu-item">Courses</a>
+        <div class="navbar">
+            <div class="navbar-header">
+                <a class="logo">
+                    <img src="../../img/logo.png" alt="SevMoodle"/>
+                </a>
+                <h1 class="logo-title">SevMoodle</h1>
+                <a class="menu-item" th:href="@{/directions}">Directions</a>
+                <a class="menu-item" th:href="@{/departments}">Departments</a>
+                <a class="menu-item" th:href="@{/institutes}">Institutes</a>
+                <a class="menu-item" th:href="@{/users}">Users</a>
+                <a class="menu-item" th:href="@{/courses}">Courses</a>
+                <a class="menu-item" th:href="@{/diagrams}">Charts</a>
+            </div>
+            <div class="navbar-header">
+                <a class="menu-item" th:href="@{/coursedirs}"><i class="fa fa-align-justify" style="font-size:25px"></i></a>
+                <a class="menu-item" th:href="@{/developers}"><i class="fa fa-users" style="font-size:25px"></i></a>
+            </div>
         </div>
     </div>
 </div>

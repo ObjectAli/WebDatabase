@@ -8,7 +8,10 @@ import com.moodle.sevsu.webdb.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -23,7 +26,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Autowired
-    public void setUserRepository(DepartmentRepository repository){this.departmentRepository = repository;}
+    public void setUserRepository(DepartmentRepository repository) {
+        this.departmentRepository = repository;
+    }
 
     @Override
     public User getUserById(Integer id) {
@@ -36,7 +41,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUser(Integer id, String name, String surname, String secondname, String position, Department department,String phone, String email) {
+    public void updateUser(Integer id, String name, String surname, String secondname, String position, Department department, String phone, String email) {
         User updated = userRepository.getOne(id);
         updated.setName(name);
         updated.setSurname(surname);
@@ -59,5 +64,26 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<Department> findAllDepartment(){return departmentRepository.findAll();}
+    public List<Department> findAllDepartment() {
+        return departmentRepository.findAll();
+    }
+
+    @Override
+    public AtomicInteger findCountPosition(String position) {
+        List<User> userList = userRepository.findAll();
+        HashMap<String, AtomicInteger> map = new HashMap<>();
+        for (User user : userList) {
+            map.putIfAbsent(user.getPosition(), new AtomicInteger(0));
+            map.get(user.getPosition()).incrementAndGet();
+        }
+
+        AtomicInteger count = new AtomicInteger();
+        for (Map.Entry<String, AtomicInteger> entry : map.entrySet()) {
+            if (entry.getKey().equals(position)) {
+                count = entry.getValue();
+                break;
+            }
+        }
+        return count;
+    }
 }

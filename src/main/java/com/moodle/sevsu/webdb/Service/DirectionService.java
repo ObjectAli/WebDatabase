@@ -11,7 +11,7 @@ public interface DirectionService {
 
     void saveDirection(Direction direction);
 
-    void updateDirection(Integer id, String cipher, String title);
+    void updateDirection(Integer id, String cipher, String title, Institute institute);
 
     void deleteDirection(Integer id);
 

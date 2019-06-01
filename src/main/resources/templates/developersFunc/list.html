@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+</head>
+<div class="wrapper" th:fragment="developer">
+    <form  class="form-horizontal form-add-departments" th:action="@{/developers/new}" name="input_form" id="input_form"
+           method="post" role="form">
+        <a class="add">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+        </a>
+        <div class="form-group">
+            <select required th:name="course" id="select" class="form-control form-control_300px">
+                <option th:each="course : ${courses}"
+                        th:value="${course.id}"
+                        th:text="${course.title}">
+                </option>
+            </select>
+            <select required th:name="user" id="select" class="form-control form-control_300px">
+                <option th:each="user : ${users}"
+                        th:value="${user.id}"
+                        th:text="${user.name}">
+                </option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+    <table class="table table-bordered table-hover horizontal-align">
+        <thead>
+        <tr>
+            <th style="width: 50px">№</th>
+            <th style="width: 300px">Course</th>
+            <th style="width: 300px">Developer</th>
+            <th style="width: 70px">Edit</th>
+            <th style="width: 70px">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="developer : ${developers}">
+            <td class="table-column" th:text="${developerStat.count}"></td>
+            <td class="table-column" th:text="${developer.course.title}"></td>
+            <td class="table-column" th:text="${developer.user.name}"></td>
+            <td class="table-column"><a th:href="@{'/developers/edit/{id}'(id=${developer.id})}"><i class="fa fa-edit"
+                                                                                                      style="font-size:20px"></i></a>
+            </td>
+            <td class="table-column"><a th:href="@{'/developers/delete/{id}'(id=${developer.id})}"><i
+                    class="fa fa-trash" style="font-size:20px"></i></a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</html>

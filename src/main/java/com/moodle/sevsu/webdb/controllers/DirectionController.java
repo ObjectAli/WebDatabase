@@ -2,6 +2,7 @@ package com.moodle.sevsu.webdb.controllers;
 
 import com.moodle.sevsu.webdb.Service.DirectionService;
 import com.moodle.sevsu.webdb.entity.Direction;
+import com.moodle.sevsu.webdb.entity.Institute;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,8 +30,8 @@ public class DirectionController {
     }
 
     @PostMapping("/directions/new")
-    public ModelAndView updateDirection(@RequestParam String cipher, String title) {
-        directionService.saveDirection(new Direction(cipher,title));
+    public ModelAndView updateDirection(@RequestParam String cipher, @RequestParam String title, @RequestParam Institute institute) {
+        directionService.saveDirection(new Direction(cipher,title, institute));
         return new ModelAndView(new RedirectView("/directions"));
     }
 
@@ -43,8 +44,8 @@ public class DirectionController {
     }
 
     @PostMapping("/directions/update")
-    public ModelAndView saveDirection(@RequestParam Integer id, @RequestParam String cipher, @RequestParam String title) {
-        directionService.updateDirection(id, cipher, title);
+    public ModelAndView saveDirection(@RequestParam Integer id, @RequestParam String cipher, @RequestParam String title, @RequestParam Institute institute) {
+        directionService.updateDirection(id, cipher, title, institute);
         return new ModelAndView(new RedirectView("/directions"));
     }
 

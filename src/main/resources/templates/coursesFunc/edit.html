@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+</head>
+<body>
+<div class="container">
+    <div class="main-wrap">
+        <div th:replace="fragments/header :: header"></div>
+        <div class="window">
+            <table class="table table-bordered table-hover horizontal-align">
+                <thead>
+                <tr>
+                    <th style="width: 50px">Id</th>
+                    <th style="width: 250px">Title</th>
+                    <th style="width: 100px">Hours</th>
+                    <th style="width: 200px">3E</th>
+                    <th style="width: 200px">Readiness</th>
+                    <th style="width: 140px">Button</th>
+                </tr>
+                </thead>
+            </table>
+            <form class="form-horizontal form-add-courses" th:object="${course}"
+                  th:action="@{/courses/update}" name="edit_form"
+                  id="edit_form"
+                  method="post" role="form">
+                <div class="form-group">
+                    <input class="form-control form-control_50px" type="text" id="id" th:value="*{id}"
+                           th:name="id" placeholder="Enter id."/>
+                    <input class="form-control form-control_255px" type="text" id="title" th:value="*{title}"
+                           th:name="title" placeholder="Enter title."/>
+                    <input class="form-control form-control_100px" type="text" id="hours" th:value="*{hours}"
+                           th:name="hours" placeholder="Enter hours."/>
+                    <input class="form-control form-control_200px" type="text" id="eee" th:value="*{eee}"
+                           th:name="eee" placeholder="Enter second eee."/>
+                    <input class="form-control form-control_200px" type="text" id="readiness" th:value="*{readiness}"
+                           th:name="readiness" placeholder="Enter readiness."/>
+                </div>
+                <button onclick="dir" type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="footer" th:replace="fragments/footer :: footer"></div>
+</div>
+</body>
+</html>

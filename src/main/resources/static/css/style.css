@@ -50,7 +50,7 @@ tbody td {
 
 tbody tr {
     height: 30px;
-    background-color: #e5e0dd;
+    background-color: #f0fbfd;
 }
 
 tbody tr:nth-child(2n) {
@@ -72,6 +72,7 @@ tbody tr:nth-child(2n) {
 .container {
     position: relative;
     min-height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -79,15 +80,20 @@ tbody tr:nth-child(2n) {
 
 .header {
     display: flex;
-    height: 80px;
+    height: 60px;
     background: #129399;
-    padding: 0 100px;
+    padding: 5px 100px;
+}
+
+.navbar{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    position: relative;
 }
 
 .navbar-header{
     display: flex;
-    width: 800px;
-    justify-content: flex-start;
     position: relative;
     margin: auto 0;
     align-items: center;
@@ -102,8 +108,8 @@ tbody tr:nth-child(2n) {
 }
 
 .logo{
-    width: 60px;
     margin-right: 0;
+    width: 60px;
 }
 
 .logo img{
@@ -122,7 +128,11 @@ tbody tr:nth-child(2n) {
     color: white;
 }
 
-.menu-item:hover {
+.menu-item i{
+    color: black;
+}
+
+.menu-item:hover, .menu-item i:hover {
     color: #f2b830;
 }
 
@@ -140,7 +150,11 @@ tbody tr:nth-child(2n) {
     overflow: hidden;
     height: 100%;
     width: 1300px;
-    margin: 10px auto 50px;
+    margin: 10px auto 0;
+}
+
+.frame{
+    margin-top: 40px;
 }
 
 .window {
@@ -185,6 +199,10 @@ tbody tr:nth-child(2n) {
     width: auto;
 }
 
+.form-add-courses{
+    width: 972px;
+}
+
 .add {
     display: flex;
     height: 100%;
@@ -222,6 +240,10 @@ tbody tr:nth-child(2n) {
     width: 200px;
 }
 
+.form-control_255px{
+    width: 255px;
+}
+
 .form-control_300px{
     width: 300px;
 }
@@ -242,6 +264,14 @@ tbody tr:nth-child(2n) {
     top: -4px;
 }
 
+.fa-users, .fa-users:hover, .fa-users:active{
+    color: #0d495d;
+}
+
+.fa-align-justify, .fa-align-justify:hover, .fa-align-justify:active{
+    color: #0d495d;
+}
+
 .fa-edit, .fa-edit:hover, .fa-edit:active {
     color: #0d495d;
 }
@@ -249,6 +279,89 @@ tbody tr:nth-child(2n) {
 .fa-trash, .fa-trash:hover, .fa-trash:active {
     color: black;
 }
+
+/*-->slider---------------------------------------------------------*/
+.slider {
+    position: relative;
+    width: 680px;
+    margin: 20px auto 50px;
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.75);
+}
+
+.slider input[name="switch"] {
+    display: none;
+}
+
+.switch {
+    position: absolute;
+    left: 0;
+    bottom: -40px;
+    text-align: center;
+    width: 100%;
+}
+
+.switch label {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    cursor: pointer;
+    margin: 0 3px;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, .8);
+    border-radius: 50%;
+    border: 5px solid rgba(13, 73, 93, 0.44);;
+    /*background-color: #738290;*/
+}
+
+#btn1:checked~.switch label[for="btn1"] {
+    background-color: #f2b830;
+}
+
+#btn2:checked~.switch label[for="btn2"] {
+    background-color: #f2b830;
+}
+
+#btn3:checked~.switch label[for="btn3"] {
+    background-color: #f2b830;
+}
+
+#btn4:checked~.switch label[for="btn4"] {
+    background-color: #f2b830;
+}
+
+.slider-inner {
+    overflow: hidden;
+}
+
+.slides {
+    width: 400%;
+    transition: all 0.5s;
+    display: flex;
+    justify-content: space-around;
+}
+
+.slides div {
+    width: 600px;
+    height: 450px;
+    float: left;
+}
+
+#btn1:checked~slider-inner slides {
+    transform: translate(0);
+}
+
+#btn2:checked~.slider-inner .slides {
+    transform: translate(-340px);
+}
+
+#btn3:checked~.slider-inner .slides {
+    transform: translate(-680px);
+}
+
+#btn4:checked~.slider-inner .slides {
+    transform: translate(-1020px);
+}
+/*-------------------------------------------------------------------*/
+
 
 .footer {
     display: flex;
