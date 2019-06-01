@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+</head>
+
+<body>
+<div class="container">
+    <div class="main-wrap">
+        <div class="header" th:replace="fragments/header :: header"></div>
+        <div class="wrapper" th:if="${not #lists.isEmpty(coursedirs)}">
+            <div th:replace="coursedirsFunc/list :: coursedir"></div>
+        </div>
+    </div>
+    <div class="footer" th:replace="fragments/footer :: footer"></div>
+</div>
+</body>
+
+</html>

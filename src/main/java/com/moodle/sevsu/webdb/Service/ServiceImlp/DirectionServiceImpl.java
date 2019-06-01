@@ -36,10 +36,11 @@ public class DirectionServiceImpl implements DirectionService {
     }
 
     @Override
-    public void updateDirection(Integer id, String cipher, String title) {
+    public void updateDirection(Integer id, String cipher, String title, Institute institute) {
         Direction updated = repository.getOne(id);
         updated.setCipher(cipher);
         updated.setTitle(title);
+        updated.setInstitute(institute);
         repository.save(updated);
     }
 

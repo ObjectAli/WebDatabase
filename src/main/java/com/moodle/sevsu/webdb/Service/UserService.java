@@ -3,7 +3,9 @@ package com.moodle.sevsu.webdb.Service;
 import com.moodle.sevsu.webdb.entity.Department;
 import com.moodle.sevsu.webdb.entity.User;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public interface UserService {
 
@@ -18,5 +20,7 @@ public interface UserService {
     List<User> findAll();
 
     List<Department> findAllDepartment();
+
+    AtomicInteger findCountPosition(String position);
 
 }

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+</head>
+<div class="container">
+    <div class="main-wrap">
+        <div class="header" th:replace="fragments/header :: header"></div>
+        <div class="wrapper frame" th:fragment="coursedir">
+            <table class="table table-bordered table-hover horizontal-align">
+                <thead>
+                <tr>
+                    <th style="width: 50px">№</th>
+                    <th style="width: 200px">Cipher</th>
+                    <th style="width: 300px">Title</th>
+                    <th style="width: 300px">Institute</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="coursedir : ${coursedirs}">
+                    <td class="table-column" th:text="${coursedirStat.count}"></td>
+                    <td class="table-column" th:text="${coursedir.direction.cipher}"></td>
+                    <td class="table-column" th:text="${coursedir.direction.title}"></td>
+                    <td class="table-column" th:text="${coursedir.direction.institute.title}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="footer" th:replace="fragments/footer :: footer"></div>
+</div>
+</html>

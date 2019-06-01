@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+</head>
+<div class="wrapper" th:fragment="coursedir">
+    <form  class="form-horizontal form-add-departments" th:action="@{/coursedirs/new}" name="input_form" id="input_form"
+           method="post" role="form">
+        <a class="add">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+        </a>
+        <div class="form-group">
+            <select required th:name="course" id="select" class="form-control form-control_300px">
+                <option th:each="course : ${courses}"
+                        th:value="${course.id}"
+                        th:text="${course.title}">
+                </option>
+            </select>
+            <select required th:name="direction" id="select" class="form-control form-control_300px">
+                <option th:each="direction : ${directions}"
+                        th:value="${direction.id}"
+                        th:text="${direction.title}">
+                </option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+    <table class="table table-bordered table-hover horizontal-align">
+        <thead>
+        <tr>
+            <th style="width: 50px">№</th>
+            <th style="width: 300px">Course</th>
+            <th style="width: 300px">Directions</th>
+            <th style="width: 70px">Edit</th>
+            <th style="width: 70px">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="coursedir : ${coursedirs}">
+            <td class="table-column" th:text="${coursedirStat.count}"></td>
+            <td class="table-column" th:text="${coursedir.course.title}"></td>
+            <td class="table-column" th:text="${coursedir.direction.title}"></td>
+            <td class="table-column"><a th:href="@{'/coursedirs/edit/{id}'(id=${coursedir.id})}"><i class="fa fa-edit"
+                                                                                                    style="font-size:20px"></i></a>
+            </td>
+            <td class="table-column"><a th:href="@{'/coursedirs/delete/{id}'(id=${coursedir.id})}"><i
+                    class="fa fa-trash" style="font-size:20px"></i></a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</html>

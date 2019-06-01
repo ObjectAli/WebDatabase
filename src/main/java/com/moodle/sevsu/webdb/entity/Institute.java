@@ -18,12 +18,6 @@ public class Institute {
     @Column(name = "title")
     private String title;
 
-    @OneToMany(mappedBy = "institute", cascade = CascadeType.ALL)
-    private List<Direction> directionList;
-
-    @OneToMany(mappedBy = "institute", cascade = CascadeType.ALL)
-    private List<Department> departmentList;
-
     public int getId() {
         return id;
     }
@@ -38,22 +32,6 @@ public class Institute {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public List<Direction> getDirectionList() {
-        return directionList;
-    }
-
-    public void setDirectionList(List<Direction> directionList) {
-        this.directionList = directionList;
-    }
-
-    public List<Department> getDepartmentList() {
-        return departmentList;
-    }
-
-    public void setDepartmentList(List<Department> departmentList) {
-        this.departmentList = departmentList;
     }
 
     public Institute(){}

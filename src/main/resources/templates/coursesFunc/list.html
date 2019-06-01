@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+</head>
+<div class="wrapper" th:fragment="course">
+    <form  class="form-horizontal form-add-courses" th:action="@{/courses/new}" name="input_form" id="input_form"
+           method="post" role="form">
+        <a class="add">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+        </a>
+        <div class="form-group">
+            <input class="form-control form-control_255px" type="text" id="name" th:value="*{title}"
+                   th:name="title" placeholder="Enter title."/>
+            <input class="form-control form-control_100px" type="text" id="name" th:value="*{hours}"
+                   th:name="hours" placeholder="Enter hours."/>
+            <input class="form-control form-control_200px" type="text" id="name" th:value="*{eee}"
+                   th:name="eee" placeholder="Enter second eee."/>
+            <input class="form-control form-control_200px" type="text" id="name" th:value="*{readiness}"
+                   th:name="readiness" placeholder="Enter readiness."/>
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+    <table class="table table-bordered table-hover horizontal-align">
+        <thead>
+        <tr>
+            <th style="width: 50px">№</th>
+            <th style="width: 250px">Title</th>
+            <th style="width: 100px">Hours</th>
+            <th style="width: 100px">3E</th>
+            <th style="width: 100px">Readiness</th>
+            <th style="width: 100px">Directions</th>
+            <th style="width: 100px">Developers</th>
+            <th style="width: 70px">Edit</th>
+            <th style="width: 70px">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="course : ${courses}">
+            <td class="table-column" th:text="${courseStat.count}"></td>
+            <td class="table-column" th:text="${course.title}"></td>
+            <td class="table-column" th:text="${course.hours}"></td>
+            <td class="table-column" th:text="${course.eee}"></td>
+            <td class="table-column" th:text="${course.readiness}"></td>
+            <td class="table-column"><a th:href="@{'/courses/findDir/{id}'(id=${course.id})}"><i class="fa fa-align-justify" style="font-size:20px"></i></a></td>
+            <td class="table-column"><a th:href="@{'/courses/findDev/{id}'(id=${course.id})}"><i class="fa fa-users" style="font-size:20px"></i></a></td>
+            <td class="table-column"><a th:href="@{'/courses/edit/{id}'(id=${course.id})}"><i class="fa fa-edit"
+                                                                                          style="font-size:20px"></i></a>
+            </td>
+            <td class="table-column"><a th:href="@{'/courses/delete/{id}'(id=${course.id})}"><i
+                    class="fa fa-trash" style="font-size:20px"></i></a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</html>
