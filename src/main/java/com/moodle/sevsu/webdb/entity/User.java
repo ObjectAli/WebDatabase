@@ -15,11 +15,11 @@ public class User {
     @Column(name = "id", unique =  true, updatable = false)
     private int id;
 
-    @Column(name = "name")
-    private String name;
-
     @Column(name = "surname")
     private String surname;
+
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "secondname")
     private String secondname;
@@ -103,9 +103,9 @@ public class User {
 
     public User(){}
 
-    public User(String name, String surname, String secondname, String position, Department department, String phone, String email) {
-        this.name = name;
+    public User(String surname, String name, String secondname, String position, Department department, String phone, String email) {
         this.surname = surname;
+        this.name = name;
         this.secondname = secondname;
         this.position = position;
         this.department = department;

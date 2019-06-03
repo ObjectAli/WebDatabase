@@ -7,33 +7,33 @@
 <div class="wrapper" th:fragment="course">
     <form  class="form-horizontal form-add-courses" th:action="@{/courses/new}" name="input_form" id="input_form"
            method="post" role="form">
-        <a class="add">
-            <i class="fa fa-plus" aria-hidden="true"></i>
+        <a th:href="@{'/courses/createExcel'}" class="add excel">
+            <img src="../../../img/excel.jpg" alt="excel"/>
         </a>
         <div class="form-group">
-            <input class="form-control form-control_255px" type="text" id="name" th:value="*{title}"
-                   th:name="title" placeholder="Enter title."/>
+            <input class="form-control form-control_400px" type="text" id="name" th:value="*{title}"
+                   th:name="title" placeholder="Название"/>
             <input class="form-control form-control_100px" type="text" id="name" th:value="*{hours}"
-                   th:name="hours" placeholder="Enter hours."/>
-            <input class="form-control form-control_200px" type="text" id="name" th:value="*{eee}"
-                   th:name="eee" placeholder="Enter second eee."/>
-            <input class="form-control form-control_200px" type="text" id="name" th:value="*{readiness}"
-                   th:name="readiness" placeholder="Enter readiness."/>
+                   th:name="hours" placeholder="Кол-во часов"/>
+            <input class="form-control form-control_216px" type="text" id="name" th:value="*{eee}"
+                   th:name="eee" placeholder=" 3Е"/>
+            <input class="form-control form-control_216px" type="text" id="name" th:value="*{readiness}"
+                   th:name="readiness" placeholder=" Готовность"/>
         </div>
-        <button type="submit" class="btn btn-primary">Add</button>
+        <button type="submit" class="btn btn-primary form-control_197px">Добавить</button>
     </form>
-    <table class="table table-bordered table-hover horizontal-align">
+    <table class="table table-courses">
         <thead>
         <tr>
             <th style="width: 50px">№</th>
-            <th style="width: 250px">Title</th>
-            <th style="width: 100px">Hours</th>
-            <th style="width: 100px">3E</th>
-            <th style="width: 100px">Readiness</th>
-            <th style="width: 100px">Directions</th>
-            <th style="width: 100px">Developers</th>
-            <th style="width: 70px">Edit</th>
-            <th style="width: 70px">Delete</th>
+            <th style="width: 400px">Название</th>
+            <th style="width: 100px">Кол-во часов</th>
+            <th style="width: 100px">3Е</th>
+            <th style="width: 110px">Готовность</th>
+            <th style="width: 110px">Направления</th>
+            <th style="width: 110px">Разработчики</th>
+            <th style="width: 80px">Изменить</th>
+            <th style="width: 80px">Удалить</th>
         </tr>
         </thead>
         <tbody>

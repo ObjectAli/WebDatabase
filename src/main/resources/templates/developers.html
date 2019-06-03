@@ -9,7 +9,7 @@
 <div class="container">
     <div class="main-wrap">
         <div class="header" th:replace="fragments/header :: header"></div>
-        <div class="wrapper" th:if="${not #lists.isEmpty(developers)}">
+        <div class="wrapper">
             <div th:replace="developersFunc/list :: developer"></div>
         </div>
     </div>

@@ -12,14 +12,14 @@
             <table class="table table-bordered table-hover horizontal-align">
                 <thead>
                 <tr>
-                    <th style="width: 50px">Id</th>
-                    <th style="width: 300px">Course</th>
-                    <th style="width: 300px">Developer</th>
-                    <th style="width: 140px">Button</th>
+                    <th style="width: 50px">ИН</th>
+                    <th style="width: 300px">Курс</th>
+                    <th style="width: 450px">Разработчик</th>
+                    <th style="width: 167px">Действие</th>
                 </tr>
                 </thead>
             </table>
-            <form class="form-horizontal form-add-departments" th:object="${developer}"
+            <form class="form-horizontal form-add-developers" th:object="${developer}"
                   th:action="@{/developers/update}" name="edit_form"
                   id="edit_form"
                   method="post" role="form">
@@ -32,14 +32,14 @@
                                 th:text="${course.title}">
                         </option>
                     </select>
-                    <select required th:name="user" id="select" class="form-control form-control_300px">
+                    <select required th:name="user" id="select" class="form-control form-control_450px">
                         <option th:each="user : ${users}"
                                 th:value="${user.id}"
-                                th:text="${user.name}">
+                                th:text="${user.surname +' '+ user.name +' '+ user.secondname}">
                         </option>
                     </select>
                 </div>
-                <button onclick="dir" type="submit" class="btn btn-primary">Submit</button>
+                <button onclick="dir" type="submit" class="btn btn-primary">Выполнить</button>
             </form>
         </div>
     </div>

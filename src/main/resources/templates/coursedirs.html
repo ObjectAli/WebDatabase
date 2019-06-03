@@ -9,7 +9,7 @@
 <div class="container">
     <div class="main-wrap">
         <div class="header" th:replace="fragments/header :: header"></div>
-        <div class="wrapper" th:if="${not #lists.isEmpty(coursedirs)}">
+        <div class="wrapper">
             <div th:replace="coursedirsFunc/list :: coursedir"></div>
         </div>
     </div>

@@ -2,6 +2,7 @@ package com.moodle.sevsu.webdb.controllers;
 
 
 import com.moodle.sevsu.webdb.Service.CourseService;
+import com.moodle.sevsu.webdb.Service.ExportExcelService;
 import com.moodle.sevsu.webdb.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 
 @Controller
@@ -18,8 +24,19 @@ public class CourseController {
     private CourseService courseService;
 
     @Autowired
+    private ServletContext servletContext;
+
+    @Autowired
+    private ExportExcelService exportExcelService;
+
+    @Autowired
     public void setCourseService(CourseService service) {
         this.courseService = service;
+    }
+
+    @Autowired
+    public void setExportExcelService(ExportExcelService service) {
+        this.exportExcelService = service;
     }
 
     @GetMapping("/courses")
@@ -65,6 +82,17 @@ public class CourseController {
     public String listDirections(@PathVariable Integer id, Model model) {
         model.addAttribute("coursedirs", courseService.findDirectionsById(id));
         return "coursesFunc/dir";
+    }
+
+    @GetMapping("/courses/createExcel")
+    public ModelAndView createExcel(HttpServletRequest request, HttpServletResponse response){
+        List<Course> list = courseService.findAll();
+        boolean isFlag = exportExcelService.createExcel(list, servletContext);
+        if(isFlag){
+            String fullPath = request.getServletContext().getRealPath("/resources/reports/"+"courses"+".xls");
+            exportExcelService.fileDownload(fullPath, response, "courses.xls");
+        }
+        return new ModelAndView(new RedirectView("/courses"));
     }
 
 }

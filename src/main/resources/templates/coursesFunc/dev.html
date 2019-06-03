@@ -12,20 +12,20 @@
                 <thead>
                 <tr>
                     <th style="width: 50px">№</th>
-                    <th style="width: 150px">Name</th>
-                    <th style="width: 150px">Surname</th>
-                    <th style="width: 150px">Second Name</th>
-                    <th style="width: 150px">Position</th>
-                    <th style="width: 150px">Department</th>
-                    <th style="width: 150px">Phone</th>
+                    <th style="width: 150px">Фамилия</th>
+                    <th style="width: 150px">Имя</th>
+                    <th style="width: 150px">Отчество</th>
+                    <th style="width: 150px">Должность</th>
+                    <th style="width: 150px">Кафедра</th>
+                    <th style="width: 150px">Телефон</th>
                     <th style="width: 200px">Email</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="developer : ${developers}">
                     <td class="table-column" th:text="${developerStat.count}"></td>
-                    <td class="table-column" th:text="${developer.user.name}"></td>
                     <td class="table-column" th:text="${developer.user.surname}"></td>
+                    <td class="table-column" th:text="${developer.user.name}"></td>
                     <td class="table-column" th:text="${developer.user.secondname}"></td>
                     <td class="table-column" th:text="${developer.user.position}"></td>
                     <td class="table-column" th:text="${developer.user.department.title}"></td>

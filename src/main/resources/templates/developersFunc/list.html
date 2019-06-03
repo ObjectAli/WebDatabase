@@ -5,10 +5,10 @@
 <head th:replace="fragments/head :: head">
 </head>
 <div class="wrapper" th:fragment="developer">
-    <form  class="form-horizontal form-add-departments" th:action="@{/developers/new}" name="input_form" id="input_form"
+    <form  class="form-horizontal form-add-developers" th:action="@{/developers/new}" name="input_form" id="input_form"
            method="post" role="form">
-        <a class="add">
-            <i class="fa fa-plus" aria-hidden="true"></i>
+        <a th:href="@{'/developers/createExcel'}" class="add excel">
+            <img src="../../../img/excel.jpg" alt="excel"/>
         </a>
         <div class="form-group">
             <select required th:name="course" id="select" class="form-control form-control_300px">
@@ -17,30 +17,34 @@
                         th:text="${course.title}">
                 </option>
             </select>
-            <select required th:name="user" id="select" class="form-control form-control_300px">
+            <select required th:name="user" id="select" class="form-control form-control_450px">
                 <option th:each="user : ${users}"
                         th:value="${user.id}"
-                        th:text="${user.name}">
+                        th:text="${user.surname +' '+ user.name +' '+ user.secondname}">
                 </option>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">Add</button>
+        <button type="submit" class="btn btn-primary">Добавить</button>
     </form>
-    <table class="table table-bordered table-hover horizontal-align">
+    <table class="table table-developers">
         <thead>
         <tr>
             <th style="width: 50px">№</th>
-            <th style="width: 300px">Course</th>
-            <th style="width: 300px">Developer</th>
-            <th style="width: 70px">Edit</th>
-            <th style="width: 70px">Delete</th>
+            <th style="width: 300px">Курс</th>
+            <th style="width: 150px">Фамилия</th>
+            <th style="width: 150px">Имя</th>
+            <th style="width: 150px">Отчество</th>
+            <th style="width: 80px">Изменить</th>
+            <th style="width: 80px">Удалить</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="developer : ${developers}">
             <td class="table-column" th:text="${developerStat.count}"></td>
             <td class="table-column" th:text="${developer.course.title}"></td>
+            <td class="table-column" th:text="${developer.user.surname}"></td>
             <td class="table-column" th:text="${developer.user.name}"></td>
+            <td class="table-column" th:text="${developer.user.secondname}"></td>
             <td class="table-column"><a th:href="@{'/developers/edit/{id}'(id=${developer.id})}"><i class="fa fa-edit"
                                                                                                       style="font-size:20px"></i></a>
             </td>

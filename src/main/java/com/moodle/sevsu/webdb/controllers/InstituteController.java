@@ -1,6 +1,7 @@
 package com.moodle.sevsu.webdb.controllers;
 
 
+import com.moodle.sevsu.webdb.Service.ExportExcelService;
 import com.moodle.sevsu.webdb.Service.InstituteService;
 import com.moodle.sevsu.webdb.entity.Institute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,13 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 
 @Controller
 @RequestMapping("/")
@@ -18,10 +26,20 @@ public class InstituteController {
     private InstituteService instituteService;
 
     @Autowired
+    private ServletContext servletContext;
+
+    @Autowired
+    private ExportExcelService exportExcelService;
+
+    @Autowired
     public void setInstituteService(InstituteService service) {
         this.instituteService = service;
     }
 
+    @Autowired
+    public void setExportExcelService(ExportExcelService service) {
+        this.exportExcelService = service;
+    }
 
     @GetMapping("/institutes")
     public String list(Model model) {
@@ -51,6 +69,17 @@ public class InstituteController {
     @GetMapping("/institutes/delete/{id}")
     public ModelAndView delete(@PathVariable Integer id) {
         instituteService.deleteInstitute(id);
+        return new ModelAndView(new RedirectView("/institutes"));
+    }
+
+    @GetMapping("/institutes/createExcel")
+    public ModelAndView createExcel(HttpServletRequest request, HttpServletResponse response){
+        List<Institute> list = instituteService.findAll();
+        boolean isFlag = exportExcelService.createExcel(list, servletContext);
+        if(isFlag){
+            String fullPath = request.getServletContext().getRealPath("/resources/reports/"+"institutes"+".xls");
+            exportExcelService.fileDownload(fullPath, response, "institutes.xls");
+        }
         return new ModelAndView(new RedirectView("/institutes"));
     }
 }

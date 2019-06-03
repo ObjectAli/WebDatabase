@@ -13,7 +13,7 @@ public interface UserService {
 
     void saveUser(User user);
 
-    void updateUser(Integer id, String name, String surname, String secondname, String position, Department department, String phone, String email);
+    void updateUser(Integer id, String surname, String name, String secondname, String position, Department department, String phone, String email);
 
     void deleteUser(Integer id);
 

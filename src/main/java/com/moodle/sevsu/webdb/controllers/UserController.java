@@ -1,6 +1,7 @@
 package com.moodle.sevsu.webdb.controllers;
 
 import com.moodle.sevsu.webdb.Service.DepartmentService;
+import com.moodle.sevsu.webdb.Service.ExportExcelService;
 import com.moodle.sevsu.webdb.Service.UserService;
 import com.moodle.sevsu.webdb.entity.Department;
 import com.moodle.sevsu.webdb.entity.User;
@@ -11,6 +12,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+
 @Controller
 @RequestMapping("/")
 public class UserController {
@@ -18,6 +24,12 @@ public class UserController {
     private UserService userService;
 
     private DepartmentService departmentService;
+
+    @Autowired
+    private ServletContext servletContext;
+
+    @Autowired
+    private ExportExcelService exportExcelService;
 
     @Autowired
     public void setUserService(UserService service) {
@@ -29,6 +41,11 @@ public class UserController {
         this.departmentService = service;
     }
 
+    @Autowired
+    public void setExportExcelService(ExportExcelService service) {
+        this.exportExcelService = service;
+    }
+
     @GetMapping("/users")
     public String list(Model model) {
         model.addAttribute("users", userService.findAll());
@@ -37,8 +54,8 @@ public class UserController {
     }
 
     @PostMapping("/users/new")
-    public ModelAndView updateUser(@RequestParam String name, @RequestParam String surname, @RequestParam String secondname, @RequestParam String position, @RequestParam Department department, @RequestParam String phone, @RequestParam String email) {
-        userService.saveUser(new User(name, surname, secondname, position, department, phone, email));
+    public ModelAndView updateUser(@RequestParam String surname, @RequestParam String name, @RequestParam String secondname, @RequestParam String position, @RequestParam Department department, @RequestParam String phone, @RequestParam String email) {
+        userService.saveUser(new User(surname, name, secondname, position, department, phone, email));
         return new ModelAndView(new RedirectView("/users"));
     }
 
@@ -51,8 +68,8 @@ public class UserController {
     }
 
     @PostMapping("/users/update")
-    public ModelAndView saveDirection(@RequestParam Integer id, @RequestParam String name, @RequestParam String surname, @RequestParam String secondname, @RequestParam String position, @RequestParam Department department, @RequestParam String phone, @RequestParam String email) {
-        userService.updateUser(id, name, surname, secondname, position, department, phone, email);
+    public ModelAndView saveDirection(@RequestParam Integer id, @RequestParam String surname, @RequestParam String name, @RequestParam String secondname, @RequestParam String position, @RequestParam Department department, @RequestParam String phone, @RequestParam String email) {
+        userService.updateUser(id, surname, name, secondname, position, department, phone, email);
         return new ModelAndView(new RedirectView("/users"));
     }
 
@@ -61,5 +78,16 @@ public class UserController {
         userService.deleteUser(id);
         return new ModelAndView(new RedirectView("/users"));
     }
+
+//    @GetMapping("/users/createExcel")
+//    public ModelAndView createExcel(HttpServletRequest request, HttpServletResponse response){
+//        List<User> list = userService.findAll();
+//        boolean isFlag = exportExcelService.createExcel(list, servletContext);
+//        if(isFlag){
+//            String fullPath = request.getServletContext().getRealPath("/resources/reports/"+"users"+".xls");
+//            exportExcelService.fileDownload(fullPath, response, "users.xls");
+//        }
+//        return new ModelAndView(new RedirectView("/users"));
+//    }
 
 }

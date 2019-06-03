@@ -5,10 +5,10 @@
 <head th:replace="fragments/head :: head">
 </head>
 <div class="wrapper" th:fragment="coursedir">
-    <form  class="form-horizontal form-add-departments" th:action="@{/coursedirs/new}" name="input_form" id="input_form"
+    <form  class="form-horizontal form-add-dir" th:action="@{/coursedirs/new}" name="input_form" id="input_form"
            method="post" role="form">
-        <a class="add">
-            <i class="fa fa-plus" aria-hidden="true"></i>
+        <a th:href="@{'/coursedirs/createExcel'}" class="add excel">
+            <img src="../../../img/excel.jpg" alt="excel"/>
         </a>
         <div class="form-group">
             <select required th:name="course" id="select" class="form-control form-control_300px">
@@ -24,16 +24,16 @@
                 </option>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">Add</button>
+        <button type="submit" class="btn btn-primary">Добавить</button>
     </form>
-    <table class="table table-bordered table-hover horizontal-align">
+    <table class="table table-coursedirs">
         <thead>
         <tr>
             <th style="width: 50px">№</th>
-            <th style="width: 300px">Course</th>
-            <th style="width: 300px">Directions</th>
-            <th style="width: 70px">Edit</th>
-            <th style="width: 70px">Delete</th>
+            <th style="width: 300px">Курс</th>
+            <th style="width: 300px">Направление</th>
+            <th style="width: 80px">Изменить</th>
+            <th style="width: 80px">Удалить</th>
         </tr>
         </thead>
         <tbody>
