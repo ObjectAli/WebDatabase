@@ -61,7 +61,9 @@ public class CourseController {
     }
 
     @PostMapping("/courses/update")
-    public ModelAndView saveCourse(@RequestParam Integer id, @RequestParam String title, @RequestParam int hours, @RequestParam int eee, @RequestParam int readiness) {
+    public ModelAndView saveCourse(@RequestParam Integer id, @RequestParam String title,
+                                   @RequestParam int hours, @RequestParam int eee,
+                                   @RequestParam int readiness) {
         courseService.updateCourse(id, title, hours, eee, readiness);
         return new ModelAndView(new RedirectView("/courses"));
     }

@@ -21,6 +21,7 @@ public class Department {
     @JoinColumn
     private Institute institute;
 
+    //геттеры и сеттер
     public int getId() {
         return id;
     }

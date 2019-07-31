@@ -29,11 +29,12 @@
         <tr th:each="institute : ${institutes}">
             <td class="table-column" th:text="${instituteStat.count}"></td>
             <td class="table-column" th:text="${institute.title}"></td>
-            <td class="table-column"><a th:href="@{'/institutes/edit/{id}'(id=${institute.id})}"><i class="fa fa-edit"
-                                                                                                      style="font-size:20px"></i></a>
+            <td class="table-column"><a th:href="@{'/institutes/edit/{id}'(id=${institute.id})}">
+                <i class="fa fa-edit" style="font-size:20px"></i></a>
             </td>
-            <td class="table-column"><a th:href="@{'/institutes/delete/{id}'(id=${institute.id})}"><i
-                    class="fa fa-trash" style="font-size:20px"></i></a></td>
+            <td class="table-column"><a th:href="@{'/institutes/delete/{id}'(id=${institute.id})}">
+                <i class="fa fa-trash" style="font-size:20px"></i></a>
+            </td>
         </tr>
         </tbody>
     </table>

@@ -47,7 +47,9 @@ public class DirectionController {
     }
 
     @PostMapping("/directions/new")
-    public ModelAndView updateDirection(@RequestParam String cipher, @RequestParam String title, @RequestParam Institute institute) {
+    public ModelAndView updateDirection(@RequestParam String cipher,
+                                        @RequestParam String title,
+                                        @RequestParam Institute institute) {
         directionService.saveDirection(new Direction(cipher,title, institute));
         return new ModelAndView(new RedirectView("/directions"));
     }

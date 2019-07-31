@@ -79,15 +79,15 @@ public class UserController {
         return new ModelAndView(new RedirectView("/users"));
     }
 
-//    @GetMapping("/users/createExcel")
-//    public ModelAndView createExcel(HttpServletRequest request, HttpServletResponse response){
-//        List<User> list = userService.findAll();
-//        boolean isFlag = exportExcelService.createExcel(list, servletContext);
-//        if(isFlag){
-//            String fullPath = request.getServletContext().getRealPath("/resources/reports/"+"users"+".xls");
-//            exportExcelService.fileDownload(fullPath, response, "users.xls");
-//        }
-//        return new ModelAndView(new RedirectView("/users"));
-//    }
+    @GetMapping("/users/createExcel")
+    public ModelAndView createExcel(HttpServletRequest request, HttpServletResponse response){
+        List<User> list = userService.findAll();
+        boolean isFlag = exportExcelService.createExcel(list, servletContext);
+        if(isFlag){
+            String fullPath = request.getServletContext().getRealPath("/resources/reports/"+"users"+".xls");
+            exportExcelService.fileDownload(fullPath, response, "users.xls");
+        }
+        return new ModelAndView(new RedirectView("/users"));
+    }
 
 }

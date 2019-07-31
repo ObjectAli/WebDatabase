@@ -58,7 +58,7 @@ public class DiagramsController {
         AtomicInteger postion2 = userService.findCountPosition("Специалист");
         AtomicInteger postion3 = userService.findCountPosition("Магистр");
         AtomicInteger postion4 = userService.findCountPosition("Аспирант");
-        AtomicInteger postion5 = userService.findCountPosition("Преподаватель");
+        AtomicInteger postion5 = userService.findCountPosition("Ассистент");
         AtomicInteger postion6 = userService.findCountPosition("Ст. преподаватель");
         AtomicInteger postion7 = userService.findCountPosition("Доцент");
         AtomicInteger postion8 = userService.findCountPosition("Профессор");
