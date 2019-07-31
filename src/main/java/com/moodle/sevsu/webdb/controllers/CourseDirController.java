@@ -1,6 +1,7 @@
 package com.moodle.sevsu.webdb.controllers;
 
 import com.moodle.sevsu.webdb.Service.CourseDirService;
+import com.moodle.sevsu.webdb.Service.ExportExcelService;
 import com.moodle.sevsu.webdb.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 
 @Controller
@@ -17,8 +23,19 @@ public class CourseDirController {
     private CourseDirService courseDirService;
 
     @Autowired
+    private ServletContext servletContext;
+
+    @Autowired
+    private ExportExcelService exportExcelService;
+
+    @Autowired
     public void setCourseDirService(CourseDirService service) {
         this.courseDirService = service;
+    }
+
+    @Autowired
+    public void setExportExcelService(ExportExcelService service) {
+        this.exportExcelService = service;
     }
 
     @GetMapping("/coursedirs")
@@ -53,6 +70,17 @@ public class CourseDirController {
     @GetMapping("/coursedirs/delete/{id}")
     public ModelAndView delete(@PathVariable Integer id) {
         courseDirService.deleteCourseDir(id);
+        return new ModelAndView(new RedirectView("/coursedirs"));
+    }
+
+    @GetMapping("/coursedirs/createExcel")
+    public ModelAndView createExcel(HttpServletRequest request, HttpServletResponse response){
+        List<CourseDir> list = courseDirService.findAll();
+        boolean isFlag = exportExcelService.createExcel(list, servletContext);
+        if(isFlag){
+            String fullPath = request.getServletContext().getRealPath("/resources/reports/"+"coursedirs"+".xls");
+            exportExcelService.fileDownload(fullPath, response, "coursedirs.xls");
+        }
         return new ModelAndView(new RedirectView("/coursedirs"));
     }
 }

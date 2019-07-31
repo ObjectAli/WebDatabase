@@ -12,14 +12,14 @@
             <table class="table table-bordered table-hover horizontal-align">
                 <thead>
                 <tr>
-                    <th style="width: 50px">Id</th>
-                    <th style="width: 300px">Course</th>
-                    <th style="width: 300px">Directions</th>
-                    <th style="width: 140px">Button</th>
+                    <th style="width: 50px">ИН</th>
+                    <th style="width: 300px">Курс</th>
+                    <th style="width: 300px">Направление</th>
+                    <th style="width: 167px">Действие</th>
                 </tr>
                 </thead>
             </table>
-            <form class="form-horizontal form-add-departments" th:object="${coursedir}"
+            <form class="form-horizontal form-add-dir" th:object="${coursedir}"
                   th:action="@{/coursedirs/update}" name="edit_form"
                   id="edit_form"
                   method="post" role="form">
@@ -33,13 +33,13 @@
                         </option>
                     </select>
                     <select required th:name="direction" id="select" class="form-control form-control_300px">
-                        <option th:each="user : ${directions}"
-                                th:value="${directions.id}"
-                                th:text="${directions.title}">
+                        <option th:each="direction : ${directions}"
+                                th:value="${direction.id}"
+                                th:text="${direction.title}">
                         </option>
                     </select>
                 </div>
-                <button onclick="dir" type="submit" class="btn btn-primary">Submit</button>
+                <button onclick="dir" type="submit" class="btn btn-primary">Выполнить</button>
             </form>
         </div>
     </div>

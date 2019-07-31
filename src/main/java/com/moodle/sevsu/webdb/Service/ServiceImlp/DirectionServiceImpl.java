@@ -32,6 +32,7 @@ public class DirectionServiceImpl implements DirectionService {
 
     @Override
     public void saveDirection(Direction direction) {
+
         repository.save(direction);
     }
 

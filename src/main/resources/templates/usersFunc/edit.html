@@ -12,15 +12,15 @@
             <table class="table table-bordered table-hover horizontal-align">
                 <thead>
                 <tr>
-                    <th style="width: 50px">Id</th>
-                    <th style="width: 130px">Name</th>
-                    <th style="width: 130px">Surname</th>
-                    <th style="width: 130px">Second Name</th>
-                    <th style="width: 130px">Position</th>
-                    <th style="width: 130px">Department</th>
-                    <th style="width: 130px">Phone</th>
+                    <th style="width: 50px">ИН</th>
+                    <th style="width: 150px">Фамилия</th>
+                    <th style="width: 150px">Имя</th>
+                    <th style="width: 150px">Отчество</th>
+                    <th style="width: 150px">Должность</th>
+                    <th style="width: 150px">Кафедра</th>
+                    <th style="width: 150px">Телефон</th>
                     <th style="width: 200px">Email</th>
-                    <th style="width: 140px">Button</th>
+                    <th style="width: 140px">Действие</th>
                 </tr>
                 </thead>
             </table>
@@ -30,13 +30,13 @@
                   method="post" role="form">
                 <div class="form-group">
                     <input class="form-control form-control_50px" type="text" id="id" th:value="*{id}" th:name="id"/>
-                    <input class="form-control form-control_129px" type="text" id="name" th:value="*{name}"
-                           th:name="name"/>
-                    <input class="form-control form-control_129px" type="text" id="name" th:value="*{surname}"
+                    <input class="form-control form-control_149px" type="text" id="surname" th:value="*{surname}"
                            th:name="surname"/>
-                    <input class="form-control form-control_129px" type="text" id="name" th:value="*{secondname}"
+                    <input class="form-control form-control_149px" type="text" id="name" th:value="*{name}"
+                           th:name="name"/>
+                    <input class="form-control form-control_149px" type="text" id="name" th:value="*{secondname}"
                            th:name="secondname"/>
-                    <select required th:name="position" id="select" class="form-control form-control_129px">
+                    <select required th:name="position" id="select" class="form-control form-control_150px">
                         <optgroup label="Студенты">
                             <option>Бакалавр</option>
                             <option>Специалист</option>
@@ -44,24 +44,24 @@
                             <option>Аспирант</option>
                         </optgroup>
                         <optgroup label="Преподаватели">
-                            <option>Преподаватель</option>
+                            <option>Ассистент</option>
                             <option>Ст. преподаватель</option>
                             <option>Доцент</option>
                             <option>Профессор</option>
                         </optgroup>
                     </select>
-                    <select required th:name="department" id="select" class="form-control form-control_129px">
+                    <select required th:name="department" id="select" class="form-control form-control_150px">
                         <option th:each="department : ${departments}"
                                 th:value="${department.id}"
                                 th:text="${department.title}">
                         </option>
                     </select>
-                    <input class="form-control form-control_129px" type="text" id="name" th:value="*{phone}"
+                    <input class="form-control form-control_150px" type="text" id="name" th:value="*{phone}"
                            th:name="phone"/>
                     <input class="form-control form-control_200px" type="text" id="name" th:value="*{email}"
                            th:name="email"/>
                 </div>
-                <button onclick="dir" type="submit" class="btn btn-primary">Submit</button>
+                <button onclick="dir" type="submit" class="btn btn-primary btn-add-user">Выполнить</button>
             </form>
         </div>
     </div>

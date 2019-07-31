@@ -48,14 +48,14 @@
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script th:inline="javascript">
 
-    //function (1) --> Сourse readiness chart
+    //function (1) --> Диаграмма готовности курсов
     $(function () {
         Highcharts.chart('diagram-readness', {
             chart: {
                 type: 'column'
             },
             title: {
-                text: 'Сourse readiness chart'
+                text: 'Диаграмма готовности курсов'
             },
             xAxis: {
                 categories: [[${map.keySet()}]],
@@ -65,13 +65,13 @@
                 min: 0,
                 max: 100,
                 title: {
-                    text: 'Сourse readiness'
+                    text: 'Выполнено (%)'
                 }
             },
             tooltip: {
                 headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
                 pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                    '<td style="padding:0"><b>{point.y:.1f} K</b></td></tr>',
+                    '<td style="padding:0"><b>{point.y:.1f} %</b></td></tr>',
                 footerFormat: '</table>',
                 shared: true,
                 useHTML: true
@@ -83,13 +83,13 @@
                 }
             },
             series: [{
-                name: 'Course',
+                name: 'Курс',
                 data: [[${map.values()}]]
             }]
         });
     });
 
-    //function (2) --> Count of courses in readiness chart
+    //function (2) --> Количество курсов по готовности
     $(function () {
 
         Highcharts.chart('diagram-count', {
@@ -97,7 +97,7 @@
                 type: 'pie'
             },
             title: {
-                text: 'Count of courses in readiness chart'
+                text: 'Диаграмма количества курсов по готовности'
             },
             xAxis: {
                 categories: [[${map.keySet()}]],
@@ -105,15 +105,12 @@
             },
             yAxis: {
                 min: 0,
-                max: 100,
-                title: {
-                    text: 'Сourse readiness'
-                }
+                max: 100
             },
             tooltip: {
                 headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
                 pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                    '<td style="padding:0"><b>{point.y:.1f} K</b></td></tr>',
+                    '<td style="padding:0"><b>{point.y:.1f} </b></td></tr>',
                 footerFormat: '</table>',
                 shared: true,
                 useHTML: true
@@ -125,26 +122,26 @@
                 }
             },
             series: [{
-                name: 'Count',
+                name: 'Количество',
                 data: [
-                    ['1-30', [[${readness1}]] ],
-                    ['31-70', [[${readness2}]] ],
-                    ['71-99', [[${readness3}]] ],
-                    ['99-100', [[${readness4}]] ] ]
+                    ['1-30(%)', [[${readness1}]] ],
+                    ['31-70(%)', [[${readness2}]] ],
+                    ['71-99(%)', [[${readness3}]] ],
+                    ['100(%)', [[${readness4}]] ] ]
 
             }
             ]
         });
     })
 
-    //function (3) -->
+    //function (3) -->Количество курсов для каждого направления
     $(function () {
         Highcharts.chart('diagram-direction', {
             chart: {
                 type: 'column'
             },
             title: {
-                text: 'Сount'
+                text: 'Диаграмма количества курсов для каждого направления'
             },
             xAxis: {
                 categories: [[${mapCount.keySet()}]],
@@ -152,15 +149,15 @@
             },
             yAxis: {
                 min: 0,
-                max: 30,
+                max: 15,
                 title: {
-                    text: 'Сourse readiness'
+                    text: 'Количество курсов'
                 }
             },
             tooltip: {
                 headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
                 pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                    '<td style="padding:0"><b>{point.y:.1f} K</b></td></tr>',
+                    '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
                 footerFormat: '</table>',
                 shared: true,
                 useHTML: true
@@ -172,13 +169,13 @@
                 }
             },
             series: [{
-                name: 'Course',
+                name: 'Направление',
                 data: [[${mapCount.values()}]]
             }]
         });
     });
 
-    //function (2) --> Count of courses in readiness chart
+    //function (4) --> Количество участников по должностям
     $(function () {
 
         Highcharts.chart('diagram-position', {
@@ -186,7 +183,7 @@
                 type: 'pie'
             },
             title: {
-                text: 'Count of courses in readiness chart'
+                text: 'Диаграмма количества участников по должностям'
             },
             xAxis: {
                 categories: [[${map.keySet()}]],
@@ -202,7 +199,7 @@
             tooltip: {
                 headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
                 pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                    '<td style="padding:0"><b>{point.y:.1f} K</b></td></tr>',
+                    '<td style="padding:0"><b>{point.y:.1f} </b></td></tr>',
                 footerFormat: '</table>',
                 shared: true,
                 useHTML: true
@@ -214,16 +211,16 @@
                 }
             },
             series: [{
-                name: 'Count',
+                name: 'Количество',
                 data: [
                     ['Бакалавры', [[${postion1}]] ],
                     ['Специалисты', [[${postion2}]] ],
                     ['Магистры', [[${postion3}]] ],
                     ['Аспиранты', [[${postion4}]] ],
-                    ['Преподаватели', [[${postion5}]] ],
+                    ['Ассистенты', [[${postion5}]] ],
                     ['Ст. преподаватели', [[${postion6}]] ],
-                    ['Доцент', [[${postion7}]] ],
-                    ['Профессор', [[${postion8}]] ] ]
+                    ['Доценты', [[${postion7}]] ],
+                    ['Профессоры', [[${postion8}]] ] ]
             }
             ]
         });

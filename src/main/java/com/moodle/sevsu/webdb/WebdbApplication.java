@@ -8,6 +8,8 @@ public class WebdbApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(WebdbApplication.class, args);
+
     }
 
 }
+

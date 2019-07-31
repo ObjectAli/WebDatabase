@@ -12,16 +12,16 @@
                 <thead>
                 <tr>
                     <th style="width: 50px">№</th>
-                    <th style="width: 200px">Cipher</th>
-                    <th style="width: 300px">Title</th>
-                    <th style="width: 300px">Institute</th>
+                    <th style="width: 300px">Направление</th>
+                    <th style="width: 200px">Шифр</th>
+                    <th style="width: 300px">Институт</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="coursedir : ${coursedirs}">
                     <td class="table-column" th:text="${coursedirStat.count}"></td>
-                    <td class="table-column" th:text="${coursedir.direction.cipher}"></td>
                     <td class="table-column" th:text="${coursedir.direction.title}"></td>
+                    <td class="table-column" th:text="${coursedir.direction.cipher}"></td>
                     <td class="table-column" th:text="${coursedir.direction.institute.title}"></td>
                 </tr>
                 </tbody>

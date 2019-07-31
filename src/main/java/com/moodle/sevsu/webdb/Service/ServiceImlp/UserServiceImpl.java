@@ -41,10 +41,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUser(Integer id, String name, String surname, String secondname, String position, Department department, String phone, String email) {
+    public void updateUser(Integer id, String surname, String name, String secondname, String position, Department department, String phone, String email) {
         User updated = userRepository.getOne(id);
-        updated.setName(name);
         updated.setSurname(surname);
+        updated.setName(name);
         updated.setSecondname(secondname);
         updated.setPosition(position);
         updated.setDepartment(department);

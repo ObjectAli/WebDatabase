@@ -7,16 +7,16 @@
 <div class="wrapper" th:fragment="user">
     <form  class="form-horizontal form-add-users" th:action="@{/users/new}" name="input_form" id="input_form"
            method="post" role="form">
-        <a class="add">
-            <i class="fa fa-plus" aria-hidden="true"></i>
+        <a th:href="@{'/users/createExcel'}" class="add excel">
+            <img src="../../../img/excel.jpg" alt="excel"/>
         </a>
         <div class="form-group">
+            <input class="form-control form-control_145px" type="text" id="surname" th:value="*{surname}"
+                   th:name="surname" placeholder="  Фамиля"/>
             <input class="form-control form-control_145px" type="text" id="name" th:value="*{name}"
-                   th:name="name" placeholder="Enter name."/>
-            <input class="form-control form-control_145px" type="text" id="name" th:value="*{surname}"
-                   th:name="surname" placeholder="Enter surname."/>
+                   th:name="name" placeholder="  Имя"/>
             <input class="form-control form-control_145px" type="text" id="name" th:value="*{secondname}"
-                   th:name="secondname" placeholder="Enter second name."/>
+                   th:name="secondname" placeholder="  Отчество"/>
             <select required th:name="position" id="select" class="form-control form-control_145px">
                 <optgroup label="Студенты">
                     <option>Бакалавр</option>
@@ -25,7 +25,7 @@
                     <option>Аспирант</option>
                 </optgroup>
                 <optgroup label="Преподаватели">
-                    <option>Преподаватель</option>
+                    <option>Ассистент</option>
                     <option>Ст. преподаватель</option>
                     <option>Доцент</option>
                     <option>Профессор</option>
@@ -38,32 +38,32 @@
                 </option>
             </select>
             <input class="form-control form-control_145px" type="text" id="name" th:value="*{phone}"
-                   th:name="phone" placeholder="Enter phone."/>
-            <input class="form-control form-control_200px" type="text" id="name" th:value="*{email}"
-                   th:name="email" placeholder="Enter email."/>
+                   th:name="phone" placeholder="  Телефон"/>
+            <input class="form-control form-control_170px" type="text" id="name" th:value="*{email}"
+                   th:name="email" placeholder="  Email"/>
         </div>
-        <button type="submit" class="btn btn-primary">Add</button>
+        <button type="submit" class="btn btn-primary">Добавить</button>
     </form>
-    <table class="table table-bordered table-hover horizontal-align">
+    <table class="table table-users">
         <thead>
         <tr>
             <th style="width: 50px">№</th>
-            <th style="width: 150px">Name</th>
-            <th style="width: 150px">Surname</th>
-            <th style="width: 150px">Second Name</th>
-            <th style="width: 150px">Position</th>
-            <th style="width: 150px">Department</th>
-            <th style="width: 150px">Phone</th>
+            <th style="width: 150px">Фамилия</th>
+            <th style="width: 150px">Имя</th>
+            <th style="width: 150px">Отчество</th>
+            <th style="width: 150px">Должность</th>
+            <th style="width: 150px">Кафедра</th>
+            <th style="width: 150px">Телефон</th>
             <th style="width: 200px">Email</th>
-            <th style="width: 70px">Edit</th>
-            <th style="width: 70px">Delete</th>
+            <th style="width: 80px">Изменить</th>
+            <th style="width: 80px">Удалить</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="user : ${users}">
             <td class="table-column" th:text="${userStat.count}"></td>
-            <td class="table-column" th:text="${user.name}"></td>
             <td class="table-column" th:text="${user.surname}"></td>
+            <td class="table-column" th:text="${user.name}"></td>
             <td class="table-column" th:text="${user.secondname}"></td>
             <td class="table-column" th:text="${user.position}"></td>
             <td class="table-column" th:text="${user.department.title}"></td>
